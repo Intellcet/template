@@ -1,5 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const { getPlugins } = require("./plugins");
+const { getLoaders } = require("./loaders");
 
 const config = {
     mode: 'development',
@@ -18,26 +20,9 @@ const config = {
         modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
     },
     module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                }
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-        ],
+        rules: getLoaders({ folder: 'assets' }),
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            inject: 'body',
-            template: path.resolve(process.cwd(), 'src/index.html'),
-        }),
-    ],
+    plugins: getPlugins({ folder: 'assets' }),
 };
 
 module.exports = config;
