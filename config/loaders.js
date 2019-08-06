@@ -1,8 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const typedCssModuleLoader = require('../lib/typed-css-module-loader');
-
 const getScriptsLoader = () => ({
     test: /\.(jsx?|tsx?)$/,
     use: {
@@ -18,7 +16,7 @@ const getStylesLoaders = isProduction => {
     const CSS_MODULE_REGEX = /\.module\.p?css$/;
     const CSS_REGEX = /\.p?css$/;
 
-    const getLoaders = (isProduction, cssLoaderOptions, isCssModule = false) => {
+    const getLoaders = (isProduction, cssLoaderOptions) => {
         return isProduction
         ? [
             {
@@ -38,7 +36,6 @@ const getStylesLoaders = isProduction => {
         ]
         : [
             'style-loader',
-            isCssModule && typedCssModuleLoader,
             {
                 loader: 'css-loader',
                 options: cssLoaderOptions,
