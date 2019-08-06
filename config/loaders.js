@@ -1,15 +1,9 @@
-const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const getScriptsLoader = () => ({
-    test: /\.(jsx?|tsx?)$/,
-    use: {
-        loader: 'babel-loader',
-        options: { cacheDirectory: true },
-    },
-    include: [
-        path.resolve(process.cwd(), 'client'),
-    ],
+  test: /\.js$/,
+  exclude: /node_modules/,
+  use: ["babel-loader", "eslint-loader"]
 });
 
 const getStylesLoaders = isProduction => {
