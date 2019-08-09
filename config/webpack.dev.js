@@ -16,8 +16,11 @@ const config = {
     chunkFilename: './assets/js/[name].chunk.js',
   },
   resolve: {
-    extensions: ['.js', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   module: {
     rules: getLoaders({ folder: 'assets' }),

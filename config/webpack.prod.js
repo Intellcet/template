@@ -1,5 +1,8 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const { getLoaders } = require('./loaders');
+const { getPlugins } = require('./plugins');
+const { getMinimizers } = require('./minimizers');
 
 const config = {
   mode: 'production',
@@ -10,34 +13,24 @@ const config = {
     path: path.resolve(process.cwd(), 'build'),
     pathinfo: true,
     publicPath: '/',
-    filename: './assets/js/bundle.js',
-    chunkFilename: './assets/js/[name].chunk.js',
+    filename: 'assets/js/[name].[contenthash:8].js',
+    chunkFilename: 'assets/js/[name].[contenthash:8].chunk.js',
+  },
+  optimization: {
+    minimize: true,
+    minimizer: getMinimizers(),
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+    extensions: ['.js', '.jsx', '.json'],
     modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
+    rules: getLoaders({ folder: 'assets' }),
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      inject: 'body',
-      template: path.resolve(process.cwd(), 'src/index.html'),
-    }),
-  ],
+  plugins: getPlugins({ folder: 'assets' }),
 };
 
 module.exports = config;
