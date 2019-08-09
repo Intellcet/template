@@ -1,9 +1,12 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const getScriptsLoader = () => ({
-  test: /\.js$/,
+  test: /\.jsx?$/,
   exclude: /node_modules/,
-  use: 'babel-loader',
+  use: {
+    loader: 'babel-loader',
+    options: { cacheDirectory: true },
+  },
 });
 
 const getStylesLoaders = isProduction => {

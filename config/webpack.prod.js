@@ -7,7 +7,7 @@ const { getMinimizers } = require('./minimizers');
 const config = {
   mode: 'production',
   entry: {
-    main: [path.resolve(process.cwd(), 'src/index.js')],
+    main: [path.resolve(process.cwd(), 'src/index.jsx')],
   },
   output: {
     path: path.resolve(process.cwd(), 'build'),
