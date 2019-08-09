@@ -14,8 +14,8 @@ const devServerConfig = {
   clientLogLevel: 'none',
   hot: true,
   stats: {
-      colors: true,
-      modules: false,
+    colors: true,
+    modules: false,
   },
   port,
   host,
@@ -27,5 +27,5 @@ const compiler = webpack(config);
 const devServer = new WebpackDevServer(compiler, devServerConfig);
 
 devServer.listen(port, host, () => {
-    console.log(`Starting server on ${host}:${port}`);
+  console.log(`Starting server on ${host}:${port}`);
 });
