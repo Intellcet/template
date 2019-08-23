@@ -6,7 +6,7 @@ const { getLoaders } = require('./loaders');
 const config = {
   mode: 'development',
   entry: {
-    main: [path.resolve(process.cwd(), 'src/index.jsx')],
+    main: [path.resolve(process.cwd(), 'src/index.tsx')],
   },
   output: {
     path: path.resolve(process.cwd(), 'build'),
@@ -16,7 +16,7 @@ const config = {
     chunkFilename: './assets/js/[name].chunk.js',
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     modules: [path.resolve(process.cwd(), 'src'), 'node_modules'],
     alias: {
       'react-dom': '@hot-loader/react-dom',

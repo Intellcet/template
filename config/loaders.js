@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const getScriptsLoader = () => ({
-  test: /\.jsx?$/,
+  test: /\.(jsx?|tsx?)$/,
   exclude: /node_modules/,
   use: {
     loader: 'babel-loader',

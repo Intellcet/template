@@ -33,7 +33,11 @@ module.exports = function(api) {
         ]
       : ['react-hot-loader/babel'];
 
-  const presets = [...getEnvPreset(), '@babel/preset-react'];
+  const presets = [
+    ...getEnvPreset(),
+    '@babel/preset-react',
+    '@babel/preset-typescript',
+  ];
 
   const plugins = [
     ['@babel/plugin-proposal-decorators', { legacy: true }],
