@@ -23,7 +23,7 @@
     ],
     "src/**/*.{css,pcss}": [
       "prettier --write",
-      "stylelint --fix --config stylelint.pre-commit.config.js",
+      "stylelint --fix --config stylelint.format.config.js",
       "git add"
     ]
   },
