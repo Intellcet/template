@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "plugins": ["import", "prettier", "jsx-a11y", "react"],
+  "plugins": ["import", "prettier", "jsx-a11y", "react", "react-hooks"],
   "parserOptions": {
     "ecmaVersion": 7,
     "ecmaFeatures": {
@@ -66,6 +66,8 @@
     "react/jsx-filename-extension": [1, {
       "extensions": [".jsx"]
     }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "valid-jsdoc": [
       "error",
       {
